@@ -1,7 +1,8 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+import path from "path";
+const __dirname = path.resolve();
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
-module.exports = {
+export default {
   mode: "development",
   entry: {
     bundle: path.resolve(__dirname, "src/app.ts"),
