@@ -1,6 +1,6 @@
 {
   "name": "create-light-project",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Create light apps",
   "main": "index.js",
   "bin": "./bin/cli.js",
@@ -28,5 +28,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/sumanbiswas7/create-light-project.git"
-  }
+  },
+  "dependencies": {
+    "chalk": "^5.2.0"
+  },
+  "type": "module"
 }
