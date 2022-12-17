@@ -11,6 +11,7 @@ export default {
     path: path.resolve(__dirname, "dist"),
     filename: "[name][contenthash].js",
     clean: true,
+    assetModuleFilename: "[name][ext]",
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -29,6 +30,10 @@ export default {
         test: /\.ts?$/,
         use: "ts-loader",
         exclude: /node_modules/,
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
+        type: "asset/resource",
       },
     ],
   },

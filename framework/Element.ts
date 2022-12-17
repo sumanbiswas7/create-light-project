@@ -2,10 +2,20 @@ export class Element {
     html: HTMLElement;
 
     // creates an element and appends it to app
-    constructor({ type, className, idName }: Args, innerText?: string) {
+    constructor({ type, className, idName, src, href }: Args, innerText?: string) {
         this.html = document.createElement(type);
         const newTextNode = document.createTextNode(innerText || "");
         this.html.append(newTextNode);
+
+        if (type == "img") {
+            const imgEl = this.html as HTMLImageElement
+            imgEl.src = src || ""
+        }
+        if (type == "a") {
+            const aEl = this.html as HTMLAnchorElement
+            aEl.href = href || ""
+            aEl.target = "_blank"
+        }
 
         if (className) this.html.setAttribute("class", className);
         if (idName) this.html.setAttribute("id", idName);
@@ -38,7 +48,9 @@ export class Element {
 }
 
 interface Args {
-    type: "div" | "p" | "button" | "span"
+    type: "div" | "p" | "button" | "span" | "img" | "a"
     className?: string
     idName?: string
+    src?: string
+    href?: string
 }

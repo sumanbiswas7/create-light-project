@@ -1,14 +1,19 @@
 import "./style.css"
 import { Element } from "../framework/index"
+import lightLogoImg from "./assets/full_logo-light.svg"
 
-const clickMeBtn = new Element({ type: "button" }, "Click Me Pls")
-const para = new Element({ type: "p", idName: "para" }, "Lorem, ipsum dolor sit amet consectetur adipisicing elit.Non illum alias molestiae nulla fuga consectetur.")
-const countBtn = new Element({ type: "button" }, "Count is 0")
+// Elements
+new Element({ type: "img", idName: "img", className: "logo_img", src: lightLogoImg })
+new Element({ type: "p", className: "text" }, "Get started by editing src/app.ts")
+new Element({ type: "a", className: "btn doc_btn", href: "https://github.com/sumanbiswas7/create-light-project" }, "Docs")
+const countBtn = new Element({ type: "button", className: "btn count_btn" }, "Count is 0")
 
+// Functions
 let count = 0
 const handleClick = () => {
     count += 1
     countBtn.setText(`Count is ${count}`)
 }
 
+// Adding Listeners
 countBtn.onClick(handleClick)

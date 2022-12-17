@@ -1,3 +1,56 @@
-p {
-  background-color: red;
+:root {
+  background-color: #242424;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+* {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.logo_img {
+  min-width: 20rem;
+}
+
+.text {
+  color: #cecece;
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
+}
+
+.btn {
+  border: none;
+  width: 7rem;
+  height: 2.6rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  transition: all 0.25s;
+  cursor: pointer;
+  color: #242424;
+  margin-bottom: 0.4rem;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn:hover {
+  filter: brightness(70%);
+}
+
+.count_btn {
+  background-color: #ff440a;
+}
+.doc_btn {
+  background-color: #ffb45b;
+  color: #242424;
 }
