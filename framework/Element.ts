@@ -45,6 +45,12 @@ export class Element {
     onClick(f: (e: MouseEvent) => void) {
         this.html.addEventListener("click", f);
     }
+
+    // set inner elements
+    setChild(element: HTMLElement) {
+        this.html.appendChild(element)
+    }
+
 }
 
 interface Args {

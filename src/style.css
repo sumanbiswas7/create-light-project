@@ -43,14 +43,25 @@ body {
   justify-content: center;
   align-items: center;
 }
-.btn:hover {
+@media (hover) {
+  .btn:hover {
+    filter: brightness(70%);
+  }
+}
+.btn:active {
   filter: brightness(70%);
 }
-
 .count_btn {
   background-color: #ff440a;
 }
 .doc_btn {
   background-color: #ffb45b;
   color: #242424;
+}
+
+.parent {
+  background-color: #fff;
+}
+.child {
+  background-color: greenyellow;
 }

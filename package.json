@@ -1,7 +1,7 @@
 {
   "name": "create-light-project",
-  "version": "0.0.3",
-  "description": "Create light apps",
+  "version": "0.0.4",
+  "description": "CLI tool enables you to quickly start building a new Light.js application, with everything set up for you",
   "main": "index.js",
   "bin": "./bin/cli.js",
   "scripts": {

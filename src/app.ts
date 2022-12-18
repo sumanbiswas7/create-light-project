@@ -15,5 +15,5 @@ const handleClick = () => {
     countBtn.setText(`Count is ${count}`)
 }
 
-// Adding Listeners
+// Attaching Listeners
 countBtn.onClick(handleClick)
