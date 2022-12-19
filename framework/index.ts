@@ -1,3 +1,4 @@
 import { Element } from "./Element"
+import { h, render } from "./Core"
 
-export { Element }
+export { Element, h, render }

@@ -27,13 +27,22 @@ export default {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.ts?$/,
+        test: /\.(ts|tsx)?$/,
         use: "ts-loader",
         exclude: /node_modules/,
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
         type: "asset/resource",
+      },
+      {
+        test: /\.(js|jsx)$/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-react"],
+          },
+        },
       },
     ],
   },
