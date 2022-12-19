@@ -3,7 +3,7 @@ const __dirname = path.resolve();
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export default {
-  mode: "development",
+  mode: "production",
   entry: {
     bundle: path.resolve(__dirname, "src/app.ts"),
   },

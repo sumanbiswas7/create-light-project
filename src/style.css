@@ -34,7 +34,6 @@ body {
   height: 2.6rem;
   font-size: 1rem;
   border-radius: 0.3rem;
-  transition: all 0.25s;
   cursor: pointer;
   color: #242424;
   margin-bottom: 0.4rem;
@@ -42,26 +41,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.2s;
 }
 @media (hover) {
   .btn:hover {
-    filter: brightness(70%);
+    filter: brightness(80%);
   }
 }
 .btn:active {
   filter: brightness(70%);
+  transform: translateY(1px);
 }
+
 .count_btn {
   background-color: #ff440a;
 }
 .doc_btn {
   background-color: #ffb45b;
   color: #242424;
-}
-
-.parent {
-  background-color: #fff;
-}
-.child {
-  background-color: greenyellow;
 }
