@@ -1,0 +1,33 @@
+.btn {
+  $size: 2.5rem;
+  border: none;
+  width: $size * 2.7;
+  height: $size;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  color: #242424;
+  margin-bottom: 0.4rem;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+}
+@media (hover) {
+  .btn:hover {
+    filter: brightness(80%);
+  }
+}
+.btn:active {
+  filter: brightness(70%);
+  transform: translateY(1px);
+}
+
+#countBtn {
+  background-color: #ff440a;
+}
+#docsBtn {
+  background-color: #ffb45b;
+  color: #242424;
+}

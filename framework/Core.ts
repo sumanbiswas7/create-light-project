@@ -1,21 +1,22 @@
-export function h(nodeName: any, attributes: any, ...args: any) {
-    let children = args.length ? [].concat(...args) : null;
-    return { nodeName, attributes, children };
+export function append(element: string) {
+    const newEl = document.createElement("div")
+    newEl.innerHTML = element
+    document.getElementById("app")!.appendChild(newEl)
 }
 
-export function render(vnode: any) {
-    // Strings just convert to #text Nodes:
-    if (vnode.split) return document.createTextNode(vnode);
+// handle onClick event 
+export function onClick(id: string, f: (e?: any) => any) {
+    const element = document.getElementById(id)
+    element?.addEventListener("click", f)
+}
 
-    // create a DOM element with the nodeName of our VDOM element:
-    let n = document.createElement(vnode.nodeName);
+// handle any event 
+export function onEvent(id: string, event: string, f: () => any) {
+    const element = document.getElementById(id)
+    element?.addEventListener(event, f)
+}
 
-    // copy attributes onto the new node:
-    let a = vnode.attributes || {};
-    Object.keys(a).forEach((k) => n.setAttribute(k, a[k]));
-
-    // render (build) and then append child nodes:
-    (vnode.children || []).forEach((c) => n.appendChild(render(c)));
-
-    return n;
+export function setText(id: string, text: string) {
+    const element = document.getElementById(id)
+    element!.innerText = text
 }

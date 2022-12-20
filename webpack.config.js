@@ -23,26 +23,17 @@ export default {
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        test: /\.(scss|css)$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-        test: /\.(ts|tsx)?$/,
+        test: /\.ts?$/,
         use: "ts-loader",
         exclude: /node_modules/,
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
         type: "asset/resource",
-      },
-      {
-        test: /\.(js|jsx)$/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-react"],
-          },
-        },
       },
     ],
   },
