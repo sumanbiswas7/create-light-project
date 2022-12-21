@@ -17,65 +17,83 @@ You can create a new project interactively by running:
 npx create-light-project@latest
 ```
 
+# Who should use this framework ?
+
+lightjs is a simple framework compared to React, Angular and other frameworks like that. There are a few things to keep in mind before you choose light. Let’s talk about when should you use light.
+
+- If you want to build a small web app and want to use node modules, follow a separated components project structure, and keep your app small in size.
+- If you know html css javascript and don’t want to learn frameworks or you want to get a little idea of how frontend frameworks work you should give lightjs a try.
+
 # Documentation
 
-Light.js is a JavaScript framework for building user interfaces. Go throught this documentation to have a better understanding. Hope you have already successfully created a light project using `create-light-project` cli tool so let's jump forward.
+Light.js is a JavaScript framework for building user interfaces that comes with typescript and sass support out of the box. Go throught this documentation to have a better understanding. Hope you have already successfully created a light project using `create-light-project` cli tool so let's jump forward.
 
-### Creating Elements
+### Creating components
 
-To create Html Elements we have to use the Element class that comes with this framework. Creation of elements are possible simply by instantiating the class with some arguments. Below is an example of creating a button element using Element class.
+Components in lightjs is a function that returns a template that can be appended to the dom. You can pass props as arguments of the function. A template is a html wrapped in string. You can also add separate styles for the component. Let's take an example of a Button component.
 
-```js
-import { Element } from "../framework/index";
+```ts
+import "./styles.scss";
 
-new Element({ type: "button", className: "btn" }, "Click Me Btn");
+interface Props {
+  text: string;
+}
+
+export const Button = ({ text }: Props) => {
+  const template = `
+      <button class=btn>${text}</button>
+    `;
+  return template;
+};
 ```
 
-| Args      | Description                          |
-| --------- | ------------------------------------ |
-| type      | Element type ("p", "button", "h1"..) |
-| className | Gives the element a class            |
-| idName    | Gives the element an id              |
-| innerText | Sets the inner text of the element   |
-| href      | Sets the href of `a` element         |
-| src       | Sets the src of `img` element        |
+### Appending to dom
 
-### Attaching event listeners
+You can render components to the dom with the help of the `append()` function. Passing the component as an argument of the append function will render the component on the dom.
 
-Element evenets can be handled by attaching listeners. We can attach listeners to our intanciated class. Below is and example of handling event.
+```ts
+import { append } from "../framework/Core";
+import { Button } from "./components/Button";
 
-```js
-const countBtn = new Element({ type: "button" }, "Click Me");
+// getting the element
+const btnEl = Button({ text: "Click Me!" });
 
-// Listener function
-let count = 0;
-const handleClick = () => {
-  count += 1;
-  countBtn.setText(`Count is ${count}`);
+// appending to the dom
+append(btnEl);
+```
+
+### Handling events
+
+Events can be handled with the help of `onEvent()` function. It takes an `id: string` as the first param,`event: string` type as the second param and a handler function as the third param. Also only for click events there's a function `onClick()`
+
+```ts
+import { append, onClick, onEvent } from "../framework/Core";
+import { Button } from "./components/Button";
+
+// getting the element
+const btnEl = Button({ text: "Click Me!" });
+
+// appending to the dom
+append(btnEl);
+
+// handler functions
+const handleClick = (e: PointerEvent) => {
+  e.preventDefault();
+  alert("clicked");
 };
 
-// Attaching listeners
-countBtn.handleEvent("click", handleClick);
-countBtn.onClick(handleClick); // Only for click events
+// attaching event listeners
+onEvent("countBtn", "click", handleClick);
+onClick("countBtn", handleClick);
 ```
 
-### Elements nesting
+### Other functions
 
-We can nest elements by setting the setChild property of any element like below
+`setText(id:string, text:string)`: changes the text value of an element
 
-```js
-const parent = new Element({ type: "div" });
-const child = new Element({ type: "div" });
+```ts
+import { setText } from "../framework/Core";
 
-parent.setChild(child.html);
-```
-
-### Adding images
-
-To add images we can simply import the image and pass it as url of a img Element
-
-```js
-import imgSrc from "./assets/image.png";
-
-const imageEl = new Element({ type: "img", src: imgSrc });
+const newText = "I am a Button";
+setText("countBtn", newText);
 ```
